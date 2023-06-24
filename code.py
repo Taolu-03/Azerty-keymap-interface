@@ -67,101 +67,20 @@ keyboard.modules.append(combos)
 keyboard.extensions.append(MediaKeys())
 keyboard.modules.append(tapdance)
 
+# Swap keys with iso azerty
+# import kmk.extensions.keymap_extras.keymap_fr_mac
+import keymap_fr_mac
+
+EURO = KC.LALT(KC.DLR)
 
 
 
-'''---------------------------------------------------------------------+
-|                                                                       |
-|   Set an alternate keymap for french mac keyboard                     |
-|                                                                       |
-|   This keymap was defined with a mac iso french layout on the system  |
-|   side                                                                |
-|                                                                       |
-|   Keyboard (board JPConstantineau) has to be configured as ISO        |
-|   in the mac system parameters                                        |
-|                                                                       |
-+---------------------------------------------------------------------'''
+# Accuentuated caps
+UPAGRV = simple_key_sequence((KC.GRV, KC.LSFT(KC.A), ))
+UPEACT = simple_key_sequence((KC.LALT(KC.LSFT(KC.N1)), KC.LSFT(KC.E), ))
+UPEGRV = simple_key_sequence((KC.GRV, KC.LSFT(KC.E), ))
+UPUGRV = simple_key_sequence((KC.GRV, KC.LSFT(KC.U), )) 
 
-from kmk.keys import KeyAttrDict
-
-KQ = KeyAttrDict() # make a duplicate of KC to get the US Qwerty codes
-
-KC.A = KQ.Q
-KC.Z = KQ.W
-KC.Q = KQ.A
-KC.M = KQ.SCLN
-KC.W = KQ.Z
-
-KC.N1 = KQ.LSFT(KQ.N1)
-KC.N2 = KQ.LSFT(KQ.N2)
-KC.N3 = KQ.LSFT(KQ.N3)
-KC.N4 = KQ.LSFT(KQ.N4)
-KC.N5 = KQ.LSFT(KQ.N5)
-KC.N6 = KQ.LSFT(KQ.N6)
-KC.N7 = KQ.LSFT(KQ.N7)
-KC.N8 = KQ.LSFT(KQ.N8)
-KC.N9 = KQ.LSFT(KQ.N9)
-KC.N0 = KQ.LSFT(KQ.N0)
-
-KC.PERC = KQ.LSFT(KQ.QUOT)
-KC.EQL = KQ.SLSH
-KC.MINS = KQ.EQL
-KC.COLN = KQ.DOT
-KC.COMM = KQ.M
-KC.DOT = KQ.LSFT(KQ.COMM)
-KC.AMPR = KQ.N1
-KC.DLR = KQ.RBRC
-KC.QUOT = KQ.N4
-KC.AT = KQ.LALT(KQ.BSLS)
-KC.HASH = KQ.LALT(KQ.LSFT(KQ.BSLS))
-KC.DQT = KQ.N3
-KC.EXLM = KQ.N8
-KC.SCLN = KQ.COMM      
-KC.SLSH = KQ.LSFT(KQ.DOT)
-KC.PIPE = KQ.LALT(KQ.LSFT(KQ.L))
-KC.BSLS = KQ.LALT(KQ.LSFT(KQ.DOT))
-KC.QUES = KQ.LSFT(KQ.M)
-# ()  {}  []  <>
-KC.LPRN = KQ.N5
-KC.RPRN = KQ.MINS 
-KC.LCBR = KQ.LALT(KQ.N5)
-KC.RCBR = KQ.LALT(KQ.MINS)
-KC.LBRC = KQ.LALT(KQ.LSFT(KQ.N5))
-KC.RBRC = KQ.LALT(KQ.LSFT(KQ.MINS))
-KC.LABK = KQ.GRV
-KC.RABK = KQ.TILD
-
-
-CIRC = KQ.LBRC
-TREMA = KQ.LSFT(KQ.LBRC)
-DEGREE = KQ.LSFT(KQ.MINS)
-
-CCEDIL = simple_key_sequence(
-        (
-                #KC.LSFT(no_release=True),
-                KC.C(no_release=True),
-                KC.MACRO_SLEEP_MS(500),
-                KC.KP_1,
-                KC.C(no_press=True),
-                #KC.LSFT(no_press=True),
-        )
-)
-
-
-AGRAVE = KQ.N0
-EACUTE = KQ.N2
-EGRAVE = KQ.N7
-UGRAVE = KQ.QUOT
-
-# Majuscules
-UPAGRV = simple_key_sequence((KQ.BSLS, KQ.LSFT(KQ.Q), ))
-UPEACT = simple_key_sequence((KQ.LALT(KQ.LSFT(KQ.N1)), KQ.LSFT(KQ.E), ))
-UPEGRV = simple_key_sequence((KQ.BSLS, KQ.LSFT(KQ.E), ))
-UPUGRV = simple_key_sequence((KQ.BSLS, KQ.LSFT(KQ.U), )) 
-
-
-EURO = KQ.LALT(KQ.RBRC)
-POUND = KQ.LSFT(KQ.BSLS)
 
 # White space if tapped, GUI if hold
 CMDSP = KC.HT(KC.SPC, KC.LCMD)
@@ -171,7 +90,7 @@ Q_SFT = KC.HT(KC.Q, KC.LSFT)
 # put CTRL on W
 W_CTR = KC.HT(KC.W, KC.LCTL) 
 # Place ç on the NUM / Symbols layer
-C_CTRL = KC.HT(CCEDIL, KC.LCTL)
+C_CTRL = KC.HT(KC.CCEDIL, KC.LCTL)
 
 F_ALT = KC.HT(KC.F, KC.LALT)
 
@@ -239,35 +158,35 @@ keyboard.keymap = [
 
  # Colemak - DBE
  [
- ESC_Fn,  KC.AMPR,               KC.DLR,  KC.QUOT,                CIRC,                  KC.B,             AGRAVE,  EACUTE,                EGRAVE,  UGRAVE,   KC.BSPC,
- KC.Z,    KC.K,                  KC.L,    KC.M,                   KC.N,                  SYS_NAV,          KC.P,    KC.U,                  KC.Y,    KC.G,     KC.J,
+ ESC_Fn,  KC.AMPR,               KC.DLR,  KC.QUOT,                KC.CIRC,               KC.B,             KC.AGR,  KC.EACUTE,             KC.EGR,  KC.UGR,   KC.BSPC,
+ KC.Z,    KC.K,                  KC.L,    KC.M,                   KC.N,                  NUM,              KC.P,    KC.U,                  KC.Y,    KC.G,     KC.J,
  Q_SFT,   KC.HT(KC.S, KC.MO(3)), KC.R,    KC.HT(KC.T, KC.MO(2)),  KC.D,                  KC.H,             KC.A,    KC.HT(KC.E, KC.MO(2)), KC.I,    KC.O,     KC.HT(KC.ENTER, KC.RSFT),
- W_CTR,   KC.X,                  KC.C,    KC.HT(KC.V, KC.LALT),   CAPS_CMD,              NUM,              CMDSP,   F_ALT,                 KC.DOT,  KC.COMM,  KC.HT(KC.COLN, KC.RCTL)
+ W_CTR,   KC.X,                  KC.C,    KC.HT(KC.V, KC.LALT),   CAPS_CMD,              SYS_NAV,          CMDSP,   F_ALT,                 KC.DOT,  KC.COMM,  KC.HT(KC.COLN, KC.RCTL)
  ], 
 
  # UPPER (Faux Caps) (1)
  [
- ESC_Fn,         KC.AT,                          KC.HASH,        KC.DQT,                          TREMA,                     KC.LSFT(KC.B),           UPAGRV,         UPEACT,                          UPEGRV,         UPUGRV,         KC.DEL,
- KC.LSFT(KC.Z),  KC.LSFT(KC.K),                  KC.LSFT(KC.L),  KC.LSFT(KC.M),                   KC.LSFT(KC.N),             SYS_NAV,                 KC.LSFT(KC.P),  KC.LSFT(KC.U),                   KC.LSFT(KC.Y),  KC.LSFT(KC.G),  KC.LSFT(KC.J),
+ ESC_Fn,         KC.AT,                          KC.HASH,        KC.DQT,                          KC.TREMA,                  KC.LSFT(KC.B),           UPAGRV,         UPEACT,                          UPEGRV,         UPUGRV,         KC.DEL,
+ KC.LSFT(KC.Z),  KC.LSFT(KC.K),                  KC.LSFT(KC.L),  KC.LSFT(KC.M),                   KC.LSFT(KC.N),             NUM,                     KC.LSFT(KC.P),  KC.LSFT(KC.U),                   KC.LSFT(KC.Y),  KC.LSFT(KC.G),  KC.LSFT(KC.J),
  KC.LSFT(KC.Q),  KC.HT(KC.LSFT(KC.S), KC.MO(3)), KC.LSFT(KC.R),  KC.HT(KC.LSFT(KC.T), KC.MO(2)),  KC.LSFT(KC.D),             KC.LSFT(KC.H),           KC.LSFT(KC.A),  KC.HT(KC.LSFT(KC.E), KC.MO(2)),  KC.LSFT(KC.I),  KC.LSFT(KC.O),  KC.ENTER,
- KC.LSFT(KC.W),  KC.LSFT(KC.X),                  KC.LSFT(KC.C),  KC.LSFT(KC.V),                   LOWER,                     NUM,                     CMDSP,          KC.LSFT(KC.F),                   KC.EXLM,        KC.SCLN,        KC.SLSH,
+ KC.LSFT(KC.W),  KC.LSFT(KC.X),                  KC.LSFT(KC.C),  KC.LSFT(KC.V),                   LOWER,                     SYS_NAV,                 CMDSP,          KC.LSFT(KC.F),                   KC.EXLM,        KC.SCLN,        KC.SLSH,
  ], 
 
  # NUM  (2)
  [
- ESC_Fn,   KC.PIPE,  KC.LBRC,  KC.RBRC,                  KC.BSPC,            KC.PERC,          KC.PPLS,  KC.N7,  KC.N8,   KC.N9,    KC.PSLS,  
- KC.TAB,   KC.BSLS,  KC.LCBR,  KC.RCBR,                  KC.DEL,             SYS_NAV,          KC.MINS,  KC.N4,  KC.N5,   KC.N6,    KC.PAST,
- KC.LSFT,  EURO,     KC.LPRN,  KC.RPRN,                  KC.QUES,            KC.EQL,           DEGREE,   KC.N1,  KC.N2,   KC.N3,    KC.HT(KC.ENTER, KC.RSFT), 
- C_CTRL,   POUND,    KC.LABK,  KC.HT(KC.RABK, KC.LALT),  CMDSP,              XXXX,             CMDSP,    KC.N0,  KC.DOT,  KC.LEFT,  KC.HT(KC.RGHT, KC.RCTL), 
+ ESC_Fn,   KC.PIPE,   KC.LBRC,  KC.RBRC,                  KC.BSPC,            KC.PERC,          KC.PPLS,  KC.N7,  KC.N8,   KC.N9,    KC.PSLS,  
+ KC.TAB,   KC.BSLS,   KC.LCBR,  KC.RCBR,                  KC.DEL,             XXXX,             KC.MINS,  KC.N4,  KC.N5,   KC.N6,    KC.PAST,
+ KC.LSFT,  EURO,      KC.LPRN,  KC.RPRN,                  KC.QUES,            KC.EQL,           KC.DEG,   KC.N1,  KC.N2,   KC.N3,    KC.HT(KC.ENTER, KC.RSFT), 
+ C_CTRL,   KC.POUND,  KC.LABK,  KC.HT(KC.RABK, KC.LALT),  CMDSP,              SYS_NAV,          CMDSP,    KC.N0,  KC.DOT,  KC.LEFT,  KC.HT(KC.RGHT, KC.RCTL), 
  ],
 
 
  # SYS - NAV  (FUL KBD) - (3)
  [
  ESC_Fn,   KC.VOLD,  KC.MUTE,        KC.VOLU,               FAVS,               W_FULL,             W_UP,    PSCR,                    PAREA,          XXXX,     KC.BSPC,
- KC.TAB,   PTAB,     KC.LGUI(KC.W),  NTAB,                  KC.N,               XXXX,               W_DWN,   PTAB,                    KC.LGUI(KC.W),  NTAB,     KC.DEL,
+ KC.TAB,   PTAB,     KC.LGUI(KC.W),  NTAB,                  KC.N,               NUM,                W_DWN,   PTAB,                    KC.LGUI(KC.W),  NTAB,     KC.DEL,
  KC.LSFT,  KC.S,     KC.R,           KC.T,                  KC.D,               W_LEFT,             W_RGHT,  XXXX,                    KC.UP,          KC.O,     KC.HT(KC.ENTER, KC.RSFT),
- W_CTR,    KC.X,     KC.C,           KC.HT(KC.V, KC.LALT),  CAPS_CMD,           NUM,                CMDSP,   KC.HT(KC.LEFT, KC.ALT),  KC.DOWN,        KC.RGHT,  KC.RCTL,
+ W_CTR,    KC.X,     KC.C,           KC.HT(KC.V, KC.LALT),  CAPS_CMD,           XXXX,               CMDSP,   KC.HT(KC.LEFT, KC.ALT),  KC.DOWN,        KC.RGHT,  KC.RCTL,
  ],
 
  # FN KEYS  (4)
@@ -278,7 +197,6 @@ keyboard.keymap = [
  XXXX,  XXXX,  XXXX,  XXXX,      KC.CMD,         KC.LCTL,        XXXX,    XXXX,    XXXX,    XXXX,    XXXX,  
  ]
 ]
-
 
 
 
