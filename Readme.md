@@ -18,8 +18,9 @@ When you define your keymap (in code.py or main.py), you will use KC.A for an 'a
 
 If your computer thinks that your keyboard is Azerty, then it will translate the received key code to the character at the same physical position on an Azerty keyboard, which is a 'q'.
 
-You now have two options to get the correct character :
+You now have three options to get the correct character :
 
+- [ ] Configure your computer to a qwerty keyboard layout (not always desired nor possible)
 - [ ] place KC.Q in your keymap where you want an 'A'
 - [ ] write an intermediate translation layer to do the permutations (KC.A becomes KC.Q and vice-versa for example) - this is the purpose of this library.
 
