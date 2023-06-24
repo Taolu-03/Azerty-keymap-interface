@@ -52,3 +52,6 @@ A kb.py and code.py are provided as an example. They have been defined for a 44 
 As such, it is a good example to configure your french layout, be it a pure standard Azerty layout.
 
 Note : the shifted version of the alphas will work (SHFT + 'a' will give a capital 'A') but not for the other keys. So an UPPER layer has been defined which acts as a "faux" shift
+
+![VColChoc44-Colemak-French](https://github.com/Taolu-03/Azerty-keymap-interface/assets/103272982/20189070-eec9-4c8a-948a-5ae681a1ff86)
+
